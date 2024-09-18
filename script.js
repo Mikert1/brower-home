@@ -8,7 +8,7 @@ const browserName = "google";
 
 const browser = document.getElementById('browser');
 const img = document.createElement('img');
-img.src = `./images/seurch/${browserName}.png`;
+img.src = `./assets/images/seurch/${browserName}.png`;
 browser.appendChild(img);
 
 const search = document.getElementById('search');
@@ -18,6 +18,7 @@ search.addEventListener('keydown', function(event) {
     }
 });
 
+const x = document.getElementById('x');
 const popup = document.getElementById('popup');
 const settings = document.getElementById('settings');
 settings.addEventListener('click', function() {
@@ -26,4 +27,7 @@ settings.addEventListener('click', function() {
     } else {
         popup.style.display = 'block';
     }
+});
+x.addEventListener('click', function() {
+    popup.style.display = 'none';
 });
