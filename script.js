@@ -1,9 +1,34 @@
-const browserName = "google";
+async function getSetings() {
+    const response = await fetch('./settings.json');
+    const data = await response.json();
+    return data;
+}
 
-const browser = document.getElementById('browser');
-const img = document.createElement('img');
-img.src = `./assets/images/seurch/${browserName}.png`;
-browser.appendChild(img);
+let browserId = 0;
+
+async function setBrowserLogo() {
+    const settings = await getSetings();
+    for (let i = 0; i < settings.length; i++) {
+        if (settings.key === "DefualtSeurchEngine") {
+            browserId = i;
+        }
+    }
+    const browser = document.getElementById('browser');
+    const img = document.createElement('img');
+    if (browserId === 0) {
+        img.src = './assets/images/seurch/google.png';
+    } else if (browserId === 1) {
+        img.src = `./assets/images/seurch/ddg.png`;
+    } else if (browserId === 2) {
+        img.src = `./assets/images/seurch/yahoo.png`;
+    } else if (browserId === 3) {
+        img.src = `./assets/images/seurch/bing.png`;
+    }
+    browser.appendChild(img);
+
+}
+
+setBrowserLogo();
 
 const search = document.getElementById('search');
 search.addEventListener('keydown', function(event) {
