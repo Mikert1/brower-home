@@ -1,0 +1,11 @@
+[
+    {
+        "key": "DefualtSeurchEngine",
+        // => 0: Google, 1: Bing, 2: Yahoo, 3: DuckDuckGo
+        "value": 0
+    },
+    {
+        "key": "key2",
+        "value": "value2"
+    }
+]

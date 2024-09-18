@@ -1,9 +1,3 @@
-// const browser = globalThis.chrome ? 'chrome' :
-//       (globalThis.netscape ? 'firefox' :
-//         (globalThis.webkit ? 'safari' : 'unknown'));
-//     console.log(
-//         `Your browser is: ${browser}.`
-//     );
 const browserName = "google";
 
 const browser = document.getElementById('browser');
