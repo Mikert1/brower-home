@@ -17,3 +17,13 @@ search.addEventListener('keydown', function(event) {
         window.location.href = `https://www.google.com/search?q=${search.value}`;
     }
 });
+
+const popup = document.getElementById('popup');
+const settings = document.getElementById('settings');
+settings.addEventListener('click', function() {
+    if (popup.style.display === 'block') {
+        popup.style.display = 'none';
+    } else {
+        popup.style.display = 'block';
+    }
+});
