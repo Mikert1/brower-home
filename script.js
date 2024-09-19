@@ -9,15 +9,17 @@ function changeBrowserLogo() {
     browser.innerHTML = '';
     const img = document.createElement('img');
     console.log(browserId);
+    let prefix = './assets/images/search/';
     if (browserId === 1) {
-        img.src = './assets/images/search/google.png';
+        prefix += 'google.png';
     } else if (browserId === 2) {
-        img.src = `./assets/images/search/ddg.png`;
+        prefix += `ddg.png`;
     } else if (browserId === 3) {
-        img.src = `./assets/images/search/yahoo.png`;
+        prefix += `yahoo.png`;
     } else if (browserId === 4) {
-        img.src = `./assets/images/search/bing.png`;
+        prefix += `bing.png`;
     }
+    img.src = `${prefix}`;
     browser.appendChild(img);
 }
 
@@ -38,7 +40,15 @@ setBrowserLogo();
 const search = document.getElementById('search');
 search.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        window.location.href = `https://www.google.com/search?q=${search.value}`;
+        if (browserId === 1) {
+            window.location.href = `https://www.google.com/search?q=${search.value}`;
+        } else if (browserId === 2) {
+            window.location.href = `https://duckduckgo.com/?q=${search.value}`;
+        } else if (browserId === 3) {
+            window.location.href = `https://search.yahoo.com/search?p=${search.value}`;
+        } else if (browserId === 4) {
+            window.location.href = `https://www.bing.com/search?q=${search.value}`;
+        }
     }
 });
 
