@@ -1,31 +1,36 @@
 async function getSetings() {
-    const response = await fetch('./settings.json');
+    const response = await fetch('settings.json');
     const data = await response.json();
     return data;
 }
 
-let browserId = 0;
+function changeBrowserLogo() {
+    const browser = document.getElementById('browser');
+    browser.innerHTML = '';
+    const img = document.createElement('img');
+    console.log(browserId);
+    if (browserId === 1) {
+        img.src = './assets/images/search/google.png';
+    } else if (browserId === 2) {
+        img.src = `./assets/images/search/ddg.png`;
+    } else if (browserId === 3) {
+        img.src = `./assets/images/search/yahoo.png`;
+    } else if (browserId === 4) {
+        img.src = `./assets/images/search/bing.png`;
+    }
+    browser.appendChild(img);
+}
+
+let browserId = 1;
 
 async function setBrowserLogo() {
     const settings = await getSetings();
     for (let i = 0; i < settings.length; i++) {
-        if (settings.key === "DefualtSeurchEngine") {
-            browserId = i;
+        if (settings[i].key === "DefualtSearchEngine") {
+            browserId = settings[i].value;
         }
     }
-    const browser = document.getElementById('browser');
-    const img = document.createElement('img');
-    if (browserId === 0) {
-        img.src = './assets/images/seurch/google.png';
-    } else if (browserId === 1) {
-        img.src = `./assets/images/seurch/ddg.png`;
-    } else if (browserId === 2) {
-        img.src = `./assets/images/seurch/yahoo.png`;
-    } else if (browserId === 3) {
-        img.src = `./assets/images/seurch/bing.png`;
-    }
-    browser.appendChild(img);
-
+    changeBrowserLogo();
 }
 
 setBrowserLogo();
@@ -46,7 +51,16 @@ settings.addEventListener('click', function() {
     } else {
         popup.style.display = 'block';
     }
-});
+});21
 x.addEventListener('click', function() {
     popup.style.display = 'none';
+});
+
+document.addEventListener('keydown', function(event) {
+    const number = parseInt(event.key);
+    if (number > 0 && number < 5) {
+        console.log(number);
+        browserId = number;
+        changeBrowserLogo();
+    }
 });
