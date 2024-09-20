@@ -36,7 +36,7 @@ body {
     gap: 10px;
     background-color: #444444;
     border-radius: 10px;
-    width: 600px;
+    width: 625px;
 }
 #browser {
     display: flex;
@@ -187,4 +187,43 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+#toggleSaved {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+}
+
+#toggleSaved svg {
+    width: 60%;
+    max-height: 60%;
+    object-fit: contain;
+}
+
+
+.savedURLs {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #444444;
+    width: 625px;
+    overflow-y: auto;
+}
+
+.savedCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #444444;
+    width: 100px;
+    height: 120px;
 }

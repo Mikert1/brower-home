@@ -53,6 +53,8 @@ search.addEventListener('keydown', function(event) {
 });
 
 const x = document.getElementById('x');
+const toggleSaved = document.getElementById('toggleSaved');
+const saved = document.querySelector('.savedURLs');
 const popup = document.getElementById('popup');
 const settings = document.getElementById('settings');
 settings.addEventListener('click', function() {
@@ -65,8 +67,18 @@ settings.addEventListener('click', function() {
 x.addEventListener('click', function() {
     popup.style.display = 'none';
 });
-
+toggleSaved.addEventListener('click', function() {
+    console.log('clicked');
+    if (saved.style.display === 'flex') {
+        saved.style.display = 'none';
+    } else {
+        saved.style.display = 'flex';
+    }
+});
 document.addEventListener('keydown', function(event) {
+    if (document.activeElement === search) {
+        return;
+    }
     const number = parseInt(event.key);
     if (number > 0 && number < 5) {
         console.log(number);
