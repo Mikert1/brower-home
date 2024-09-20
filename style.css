@@ -64,9 +64,10 @@ body {
 
 .topBar {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
+    color: #fff;
 }
 
 .between {

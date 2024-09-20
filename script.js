@@ -57,6 +57,7 @@ const toggleSaved = document.getElementById('toggleSaved');
 const saved = document.querySelector('.savedURLs');
 const popup = document.getElementById('popup');
 const settings = document.getElementById('settings');
+const chatGPT = document.querySelector('.chatGPT');
 settings.addEventListener('click', function() {
     if (popup.style.display === 'block') {
         popup.style.display = 'none';
@@ -85,4 +86,8 @@ document.addEventListener('keydown', function(event) {
         browserId = number;
         changeBrowserLogo();
     }
+});
+
+chatGPT.addEventListener('click', function() {
+    window.location.href = 'https://chatgpt.com/';
 });
