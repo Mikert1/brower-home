@@ -228,3 +228,20 @@ input:checked + .slider:before {
     width: 100px;
     height: 120px;
 }
+
+@media (max-width: 768px) {
+    .main {
+        margin-top: -20px;
+    }
+    .logo {
+        width: 70%;
+    }
+
+    .searchBar {
+        width: 80%;
+    }
+
+    .savedURLs {
+        width: 80%;
+    }
+}
