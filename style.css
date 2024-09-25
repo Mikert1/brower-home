@@ -245,7 +245,7 @@ input:checked + .slider:before {
 
 .savedURLs .lines {
     display: flex;
-    width: 30px;
+    width: 10px;
     height: 80px;
 }
 

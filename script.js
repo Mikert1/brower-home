@@ -95,11 +95,6 @@ chatGPT.addEventListener('click', function() {
 });
 
 async function loadLocal() {
-    const local1 = document.getElementById('local1');
-    const local2 = document.getElementById('local2');
-    const local3 = document.getElementById('local3');
-    const local4 = document.getElementById('local4');
-
     const settings = await getSetings();
     const locals = settings.find(setting => setting.key === "locals").value;
 
