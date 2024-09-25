@@ -6,5 +6,22 @@
     {
         "key": "key2",
         "value": "value2"
+    },
+    {
+        "key": "key3",
+        "value": "value3"
+    },
+    {
+        "key": "locals",
+        "value": [
+            {
+                "key": "local1",
+                "value": "http://localhost/phpmyadmin/"
+            },
+            {
+                "key": "local2",
+                "value": "http://localhost:5500"
+            }
+        ]
     }
 ]
