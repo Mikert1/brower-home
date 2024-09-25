@@ -64,7 +64,8 @@ settings.addEventListener('click', function() {
     } else {
         popup.style.display = 'block';
     }
-});21
+});
+
 x.addEventListener('click', function() {
     popup.style.display = 'none';
 });
@@ -76,6 +77,7 @@ toggleSaved.addEventListener('click', function() {
         saved.style.display = 'flex';
     }
 });
+
 document.addEventListener('keydown', function(event) {
     if (document.activeElement === search) {
         return;
