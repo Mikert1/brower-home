@@ -106,9 +106,13 @@ async function loadLocal() {
     locals.forEach(local => {
         for (let i = 1; i < 5; i++) {
             if (local.key === `local${i}`) {
-                document.getElementById(`local${i}`).addEventListener('click', function() {
+                const test = document.getElementById(`local${i}`)
+                test.addEventListener('click', function() {
                     window.location.href = local.value;
                 });
+                const img = document.createElement('img');
+                img.src = local.extra.image;
+                test.appendChild(img);
             }
         }
     });
