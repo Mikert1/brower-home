@@ -1,6 +1,8 @@
+let savedType;
 async function getSetings() {
     const response = await fetch('settings.json');
     const data = await response.json();
+    savedType = 'local';
     return data;
 }
 
@@ -58,6 +60,7 @@ const saved = document.querySelector('.savedURLs');
 const popup = document.getElementById('popup');
 const settings = document.getElementById('settings');
 const chatGPT = document.querySelector('.chatGPT');
+const savedTypeSwitch = document.getElementById('savedTypeSwitch');
 settings.addEventListener('click', function() {
     if (popup.style.display === 'block') {
         popup.style.display = 'none';
@@ -114,3 +117,7 @@ async function loadLocal() {
 }
 
 loadLocal()
+
+savedTypeSwitch.addEventListener('click', function() {
+    savedType = savedType === 'local' ? 'global' : 'local';
+});
