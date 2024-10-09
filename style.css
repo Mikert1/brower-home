@@ -10,6 +10,7 @@ body {
     padding: 0;
     color: #fff;
 }
+
 @font-face {
     font-family: 'Berylium BD';
     src: url('assets/font/berylium bd.otf') format('opentype');
@@ -18,6 +19,12 @@ body {
 .center {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.sb {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
