@@ -120,9 +120,5 @@ loadLocal()
 
 savedTypeSwitch.addEventListener('click', function() {
     savedType = savedType === 'local' ? 'global' : 'local';
-    if (savedType === 'local') {
-        savedTypeSwitch.src = 'assets/images/local.svg';
-    } else {
-        savedTypeSwitch.src = 'assets/images/global.svg';
-    }
+    savedTypeSwitch.querySelector('img').src = savedType === 'local' ? 'assets/images/local.svg' : 'assets/images/global.svg';
 });
