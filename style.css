@@ -28,6 +28,17 @@ body {
     align-items: center;
 }
 
+.ai-sb {
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+}
+
+.fd-c {
+    display: flex;
+    flex-direction: column;
+}
+
 .logo {
     width: 500px;
     image-rendering: pixelated;
@@ -226,6 +237,7 @@ input:checked + .slider:before {
     border-radius: 10px;
     width: 625px;
     overflow-y: auto;
+    background-color: #444444;
 }
 
 .extraTab .icon {
@@ -239,7 +251,7 @@ input:checked + .slider:before {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 10px;
-    background-color: #444444;
+    background-color: #383838;
 }
 
 .extraTab .icon img {
@@ -344,7 +356,7 @@ input:checked + .slider:before {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    background-color: #444444;
+    background-color: #383838;
     width: 40px;
     height: 40px;
 }
