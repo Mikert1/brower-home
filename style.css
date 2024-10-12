@@ -220,7 +220,7 @@ input:checked + .slider:before {
 }
 
 
-.savedURLs {
+.extraTab {
     display: none;
     padding: 20px;
     border-radius: 10px;
@@ -228,7 +228,7 @@ input:checked + .slider:before {
     overflow-y: auto;
 }
 
-.savedURLs .icon {
+.extraTab .icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -242,13 +242,13 @@ input:checked + .slider:before {
     background-color: #444444;
 }
 
-.savedURLs .icon img {
+.extraTab .icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.savedURLs .lines .center {
+.extraTab .lines .center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -256,27 +256,27 @@ input:checked + .slider:before {
     height: 100%;
 }
 
-.savedURLs .lines {
+.extraTab .lines {
     display: flex;
     width: 10px;
     height: 80px;
 }
 
-.savedURLs .lines .first {
+.extraTab .lines .first {
     width: 50%;
     height: 2px;
     border: none;
     margin: 0;
 }
 
-.savedURLs .lines .second {
+.extraTab .lines .second {
     width: 2px;
     height: 100%;
     border: none;
     margin: 0;
 }
 
-.savedURLs .lines .third {
+.extraTab .lines .third {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -286,14 +286,14 @@ input:checked + .slider:before {
     margin: 0;
 }
 
-.savedURLs .lines .third div {
+.extraTab .lines .third div {
     width: 100%;
     height: 2px;
     border: none;
     margin: 0;
 }
 
-.savedURLs .lines .fourth {
+.extraTab .lines .fourth {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -303,23 +303,23 @@ input:checked + .slider:before {
     margin: 0;
 }
 
-.savedURLs .lines .fourth div {
+.extraTab .lines .fourth div {
     width: 100%;
     height: 2px;
     border: none;
     margin: 0;
 }
 
-.savedURLs .lines .first hr,
-.savedURLs .lines .third hr,
-.savedURLs .lines .fourth hr {
+.extraTab .lines .first hr,
+.extraTab .lines .third hr,
+.extraTab .lines .fourth hr {
     width: 100%;
     border: none;
     border-top: 2px solid #c2c2c2;
     margin: 0;
 }
 
-.savedURLs .lines .second hr {
+.extraTab .lines .second hr {
     width: 100%;
     height: 100%;
     border: none;
@@ -363,7 +363,7 @@ input:checked + .slider:before {
         width: 80%;
     }
 
-    .savedURLs {
+    .extraTab {
         width: 80%;
     }
 }

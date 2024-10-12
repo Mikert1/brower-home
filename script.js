@@ -56,7 +56,7 @@ search.addEventListener('keydown', function(event) {
 
 const x = document.getElementById('x');
 const toggleSaved = document.getElementById('toggleSaved');
-const saved = document.querySelector('.savedURLs');
+const extraTab = document.querySelector('.extraTab');
 const popup = document.getElementById('popup');
 const settings = document.getElementById('settings');
 const chatGPT = document.querySelector('.chatGPT');
@@ -74,10 +74,10 @@ x.addEventListener('click', function() {
 });
 toggleSaved.addEventListener('click', function() {
     console.log('clicked');
-    if (saved.style.display === 'flex') {
-        saved.style.display = 'none';
+    if (extraTab.style.display === 'flex') {
+        extraTab.style.display = 'none';
     } else {
-        saved.style.display = 'flex';
+        extraTab.style.display = 'flex';
     }
 });
 
