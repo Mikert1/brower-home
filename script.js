@@ -1,4 +1,5 @@
 let savedType;
+let browserId = 1;
 let editMode = false;
 async function getSetings() {
     let data
@@ -10,41 +11,20 @@ async function getSetings() {
         localStorage.setItem('settingsHomepage8', JSON.stringify(data));
     }
     savedType = 'local';
-    return data;
+    return data.settings;
 }
 
-function changeBrowserLogo() {
+async function applySettings() {
+    const settings = await getSetings();
+
+    // browser enige
     const browser = document.getElementById('browser');
     browser.innerHTML = '';
     const img = document.createElement('img');
-    console.log(browserId);
-    let url = './assets/images/search/';
-    if (browserId === 1) {
-        url += 'google.png';
-    } else if (browserId === 2) {
-        url += `ddg.png`;
-    } else if (browserId === 3) {
-        url += `yahoo.png`;
-    } else if (browserId === 4) {
-        url += `bing.png`;
-    }
+    let url = `./assets/images/search/${settings.DefaultSearchEngine}.png`;
     img.src = `${url}`;
     browser.appendChild(img);
 }
-
-let browserId = 1;
-
-async function setBrowserLogo() {
-    const settings = await getSetings();
-    for (let i = 0; i < settings.length; i++) {
-        if (settings[i].key === "DefualtSearchEngine") {
-            browserId = settings[i].value;
-        }
-    }
-    changeBrowserLogo();
-}
-
-setBrowserLogo();
 
 const search = document.getElementById('search');
 search.addEventListener('keydown', function(event) {
@@ -65,11 +45,11 @@ const x = document.getElementById('x');
 const toggleSaved = document.getElementById('toggleSaved');
 const extraTab = document.querySelector('.extraTab');
 const popup = document.getElementById('popup');
-const settings = document.getElementById('settings');
+const settingsButton = document.getElementById('settings');
 const chatGPT = document.querySelector('.chatGPT');
 const savedTypeSwitch = document.getElementById('savedTypeSwitch');
 const edit = document.getElementById('edit');
-settings.addEventListener('click', function() {
+settingsButton.addEventListener('click', function() {
     if (popup.style.display === 'block') {
         popup.style.display = 'none';
     } else {
@@ -128,7 +108,7 @@ async function loadLocal() {
     });
 }
 
-loadLocal()
+applySettings()
 
 savedTypeSwitch.addEventListener('click', function() {
     savedType = savedType === 'local' ? 'global' : 'local';
