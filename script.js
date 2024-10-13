@@ -25,34 +25,46 @@ async function applySettings() {
     browser.appendChild(img);
 
     // saved sites
+    savedTypeSwitch.querySelector('img').src = `assets/images/tabs/${savedType}.svg`;
+
     const saved = document.getElementById('savedSites');
     const template = document.getElementById('savedSite');
     saved.innerHTML = '';
-    settings.locals.forEach(local => {
+    const savedWebsites = settings.savedWebsites[savedType] || {};
+    Object.keys(savedWebsites).forEach(key => {
+        const site = savedWebsites[key];
         const clone = template.content.cloneNode(true);
         const base = clone.querySelector('.base');
         const img = clone.querySelector('img');
-        const key = Object.keys(local)[0];
+        const name = clone.querySelector('.name');
+        
         base.addEventListener('click', function() {
             if (editMode) {
-                const url = prompt('Enter url');
+                const url = prompt('Enter url', site.url);
                 if (url) {
-                    local[key] = url;
+                    site.url = url;
                     localStorage.setItem('settingsHomepage8', JSON.stringify({ settings }));
                     applySettings();
                 }
             } else {
-                window.location.href = local[key];
+                window.location.href = site.url;
             }
         });
-        if (local.extra && local.extra.image) {
-            img.src = local.extra.image;
+
+        if (site.extra && site.extra.image) {
+            img.src = site.extra.image;
         } else {
             img.src = 'default-image.png';
         }
+
+        if (site.name) {
+            name.textContent = site.name;
+        } else {
+            name.textContent = 'Unnamed';
+        }
+
         saved.appendChild(clone);
     });
-
 }
 
 const search = document.getElementById('search');
@@ -140,8 +152,12 @@ async function loadLocal() {
 applySettings()
 
 savedTypeSwitch.addEventListener('click', function() {
-    savedType = savedType === 'local' ? 'global' : 'local';
-    savedTypeSwitch.querySelector('img').src = savedType === 'local' ? 'assets/images/local.svg' : 'assets/images/global.svg';
+    savedType = savedType === 'home' ? 'work' :
+                savedType === 'work' ? 'school' :
+                savedType === 'school' ? 'games' :
+                savedType === 'games' ? 'local' :
+                              'home';
+    savedTypeSwitch.querySelector('img').src = `assets/images/tabs/${savedType}.svg`;
 });
 
 document.addEventListener('keypress', function(event) {

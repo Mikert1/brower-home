@@ -9,11 +9,17 @@
             "home": {
                 "1": {
                     "name": "Netflix",
-                    "url": "https://www.netflix.com"
+                    "url": "https://www.netflix.com",
+                    "extra": {
+                        "image": "https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2023.ico"
+                    }
                 },
                 "2": {
                     "name": "YouTube",
-                    "url": "https://www.youtube.com"
+                    "url": "https://www.youtube.com",
+                    "extra": {
+                        "image": "https://www.youtube.com/s/desktop/fd504f58/img/favicon.ico"
+                    }
                 }
             },
             "work": {
