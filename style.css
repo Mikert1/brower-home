@@ -233,7 +233,7 @@ input:checked + .slider:before {
 
 .extraTab {
     display: none;
-    padding: 20px;
+    padding: 5px;
     border-radius: 10px;
     width: 625px;
     overflow-y: auto;
@@ -351,7 +351,7 @@ input:checked + .slider:before {
     height: 120px;
 }
 
-#savedTypeSwitch {
+.miniButton {
     display: flex;
     justify-content: center;
     align-items: center;
