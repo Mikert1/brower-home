@@ -1,6 +1,7 @@
 let savedType;
 let browserId = 1;
 let editMode = false;
+let settings
 async function getSetings() {
     let data
     if (localStorage.getItem('settingsHomepage8')) {
@@ -14,25 +15,24 @@ async function getSetings() {
     return data.settings;
 }
 
-async function applySettings() {
-    const settings = await getSetings();
-
-    // browser enige
+function changeBrowserLogo() {
     const browser = document.getElementById('browser');
     browser.innerHTML = '';
     const img = document.createElement('img');
-    img.src = `./assets/images/search/${settings.DefaultSearchEngine}.png`;
+    img.src = `./assets/images/search/${browserId}.png`;
     browser.appendChild(img);
+}
 
-    // saved sites
+function loadSavedSites() {
     savedTypeSwitch.querySelector('img').src = `assets/images/tabs/${savedType}.svg`;
-
+    
     const saved = document.getElementById('savedSites');
     const template = document.getElementById('savedSite');
     saved.innerHTML = '';
-    const savedWebsites = settings.savedWebsites[savedType] || {};
-    Object.keys(savedWebsites).forEach(key => {
-        const site = savedWebsites[key];
+    const savedWebsites = settings.savedWebsites[savedType];
+    for (let i = 1; i < 15; i++) {
+        const site = savedWebsites[i];
+        if (!site) {continue;}
         const clone = template.content.cloneNode(true);
         const base = clone.querySelector('.base');
         const img = clone.querySelector('img');
@@ -50,21 +50,29 @@ async function applySettings() {
                 window.location.href = site.url;
             }
         });
-
+    
         if (site.extra && site.extra.image) {
             img.src = site.extra.image;
         } else {
             img.src = 'default-image.png';
         }
-
+    
         if (site.name) {
             name.textContent = site.name;
         } else {
             name.textContent = 'Unnamed';
         }
-
+    
         saved.appendChild(clone);
-    });
+    };
+}
+
+async function applySettings() {
+    settings = await getSetings();
+    changeBrowserLogo();
+
+    // saved sites
+    loadSavedSites();
 }
 
 const search = document.getElementById('search');
@@ -158,6 +166,7 @@ savedTypeSwitch.addEventListener('click', function() {
                 savedType === 'games' ? 'local' :
                               'home';
     savedTypeSwitch.querySelector('img').src = `assets/images/tabs/${savedType}.svg`;
+    loadSavedSites();
 });
 
 document.addEventListener('keypress', function(event) {
