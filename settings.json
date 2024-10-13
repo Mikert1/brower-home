@@ -1,8 +1,9 @@
 {
     "settings": {
         "DefaultSearchEngine": 1,
+        "useLastEngineAsDefault": false,
         "DefaultSavedTab": "local",
-        "key2": "value2",
+        "useLastTabAsDefault": false,
         "key3": "value3",
         "locals": [
             {

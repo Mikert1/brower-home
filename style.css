@@ -22,6 +22,11 @@ body {
     align-items: center;
 }
 
+.gap {
+    display: flex;
+    gap: 20px;
+}
+
 .sb {
     display: flex;
     justify-content: space-between;

@@ -21,9 +21,37 @@ async function applySettings() {
     const browser = document.getElementById('browser');
     browser.innerHTML = '';
     const img = document.createElement('img');
-    let url = `./assets/images/search/${settings.DefaultSearchEngine}.png`;
-    img.src = `${url}`;
+    img.src = `./assets/images/search/${settings.DefaultSearchEngine}.png`;
     browser.appendChild(img);
+
+    // saved sites
+    const saved = document.getElementById('savedSites');
+    const template = document.getElementById('savedSite');
+    saved.innerHTML = '';
+    settings.locals.forEach(local => {
+        const clone = template.content.cloneNode(true);
+        const img = clone.querySelector('img');
+        const key = Object.keys(local)[0];
+        clone.addEventListener('click', function() {
+            if (editMode) {
+                const url = prompt('Enter url');
+                if (url) {
+                    local[key] = url;
+                    localStorage.setItem('settingsHomepage8', JSON.stringify({ settings }));
+                    applySettings();
+                }
+            } else {
+                window.location.href = local[key];
+            }
+        });
+        if (local.extra && local.extra.image) {
+            img.src = local.extra.image;
+        } else {
+            img.src = 'default-image.png';
+        }
+        saved.appendChild(clone);
+    });
+
 }
 
 const search = document.getElementById('search');
