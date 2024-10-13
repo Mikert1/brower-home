@@ -31,8 +31,9 @@ async function applySettings() {
     settings.locals.forEach(local => {
         const clone = template.content.cloneNode(true);
         const img = clone.querySelector('img');
+        const base = clone.querySelector('.base');
         const key = Object.keys(local)[0];
-        clone.addEventListener('click', function() {
+        base.addEventListener('click', function() {
             if (editMode) {
                 const url = prompt('Enter url');
                 if (url) {
