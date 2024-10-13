@@ -1,7 +1,14 @@
 let savedType;
+let editMode = false;
 async function getSetings() {
-    const response = await fetch('settings.json');
-    const data = await response.json();
+    let data
+    if (localStorage.getItem('settingsHomepage8')) {
+        data = JSON.parse(localStorage.getItem('settingsHomepage8'));
+    } else {
+        const response = await fetch('settings.json');
+        data = await response.json();
+        localStorage.setItem('settingsHomepage8', JSON.stringify(data));
+    }
     savedType = 'local';
     return data;
 }
@@ -11,17 +18,17 @@ function changeBrowserLogo() {
     browser.innerHTML = '';
     const img = document.createElement('img');
     console.log(browserId);
-    let prefix = './assets/images/search/';
+    let url = './assets/images/search/';
     if (browserId === 1) {
-        prefix += 'google.png';
+        url += 'google.png';
     } else if (browserId === 2) {
-        prefix += `ddg.png`;
+        url += `ddg.png`;
     } else if (browserId === 3) {
-        prefix += `yahoo.png`;
+        url += `yahoo.png`;
     } else if (browserId === 4) {
-        prefix += `bing.png`;
+        url += `bing.png`;
     }
-    img.src = `${prefix}`;
+    img.src = `${url}`;
     browser.appendChild(img);
 }
 
@@ -61,6 +68,7 @@ const popup = document.getElementById('popup');
 const settings = document.getElementById('settings');
 const chatGPT = document.querySelector('.chatGPT');
 const savedTypeSwitch = document.getElementById('savedTypeSwitch');
+const edit = document.getElementById('edit');
 settings.addEventListener('click', function() {
     if (popup.style.display === 'block') {
         popup.style.display = 'none';
@@ -79,6 +87,10 @@ toggleSaved.addEventListener('click', function() {
     } else {
         extraTab.style.display = 'flex';
     }
+});
+
+edit.addEventListener('click', function() {
+    editMode = !editMode;
 });
 
 document.addEventListener('keydown', function(event) {
@@ -121,4 +133,10 @@ loadLocal()
 savedTypeSwitch.addEventListener('click', function() {
     savedType = savedType === 'local' ? 'global' : 'local';
     savedTypeSwitch.querySelector('img').src = savedType === 'local' ? 'assets/images/local.svg' : 'assets/images/global.svg';
+});
+
+document.addEventListener('keypress', function(event) {
+    if (event.key === 'c') {
+        localStorage.clear();
+    }
 });

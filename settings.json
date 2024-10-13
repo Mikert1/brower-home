@@ -4,6 +4,10 @@
         "value": 1
     },
     {
+        "key": "DefualtSavedTab",
+        "value": "local"
+    },
+    {
         "key": "key2",
         "value": "value2"
     },
