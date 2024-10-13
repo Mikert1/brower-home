@@ -10,7 +10,7 @@ async function getSetings() {
         data = await response.json();
         localStorage.setItem('settingsHomepage8', JSON.stringify(data));
     }
-    savedType = 'local';
+    savedType = 'home';
     return data.settings;
 }
 
@@ -30,8 +30,8 @@ async function applySettings() {
     saved.innerHTML = '';
     settings.locals.forEach(local => {
         const clone = template.content.cloneNode(true);
-        const img = clone.querySelector('img');
         const base = clone.querySelector('.base');
+        const img = clone.querySelector('img');
         const key = Object.keys(local)[0];
         base.addEventListener('click', function() {
             if (editMode) {
