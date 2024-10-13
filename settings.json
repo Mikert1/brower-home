@@ -1,45 +1,28 @@
-[
-    {
-        "key": "DefualtSearchEngine",
-        "value": 1
-    },
-    {
-        "key": "DefualtSavedTab",
-        "value": "local"
-    },
-    {
-        "key": "key2",
-        "value": "value2"
-    },
-    {
-        "key": "key3",
-        "value": "value3"
-    },
-    {
-        "key": "locals",
-        "value": [
+{
+    "settings": {
+        "DefaultSearchEngine": 1,
+        "DefaultSavedTab": "local",
+        "key2": "value2",
+        "key3": "value3",
+        "locals": [
             {
-                "key": "local1",
-                "value": "http://localhost/phpmyadmin/",
+                "local1": "http://localhost/phpmyadmin/",
                 "extra": {
                     "image": "http://localhost/phpmyadmin/favicon.ico"
                 }
             },
             {
-                "key": "local2",
-                "value": "http://localhost:5500",
+                "local2": "http://localhost:5500",
                 "extra": {
                     "image": "http://localhost:5500/assets/images/favicon.svg"
                 }
             },
             {
-                "key": "local3",
-                "value": "http://localhost:8000"
+                "local3": "http://localhost:8000"
             },
             {
-                "key": "local4",
-                "value": "http://localhost:0000"
+                "local4": "http://localhost:0000"
             }
         ]
     }
-]
+}

@@ -251,7 +251,7 @@ input:checked + .slider:before {
     margin-left: 0px;
     margin-right: 0px;
     border-radius: 10px;
-    background-color: #383838;
+    background-color: #303035;
 }
 
 .extraTab .icon img {
@@ -356,7 +356,7 @@ input:checked + .slider:before {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    background-color: #383838;
+    background-color: #303035;
     width: 40px;
     height: 40px;
 }
