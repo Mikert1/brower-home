@@ -24,16 +24,10 @@
             },
             "work": {
                 "1": {
-                    "url": "https://www.google.com",
-                    "extra": {
-                        "image": "https://www.google.com/favicon.ico"
-                    }
+                    "url": "https://www.google.com"
                 },
                 "2": {
-                    "url": "https://www.github.com",
-                    "extra": {
-                        "image": "https://www.github.com/favicon.ico"
-                    }
+                    "url": "https://www.github.com"
                 }
             },
             "school": {

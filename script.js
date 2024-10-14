@@ -54,7 +54,7 @@ function loadSavedSites() {
         if (site.extra && site.extra.image) {
             img.src = site.extra.image;
         } else {
-            img.src = 'default-image.png';
+            img.src = `${site.url}/favicon.ico`;
         }
     
         if (site.name) {
