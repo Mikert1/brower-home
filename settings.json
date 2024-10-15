@@ -48,7 +48,7 @@
             },
             "local": {
                 "1": {
-                    "name": "PHPMyAdmin",
+                    "name": "MyAdmin",
                     "url": "http://localhost/phpmyadmin/"
                 },
                 "2": {
