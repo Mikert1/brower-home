@@ -147,6 +147,14 @@ async function loadLocal() {
             if (local.key === `local${i}`) {
                 const test = document.getElementById(`local${i}`)
                 test.addEventListener('click', function() {
+                    if (editMode) {
+                        const url = prompt('Enter url', local.value);
+                        if (url) {
+                            local.value = url;
+                            localStorage.setItem('settingsHomepage8', JSON.stringify({ settings }));
+                            applySettings();
+                        }
+                    }
                     window.location.href = local.value;
                 });
                 const img = document.createElement('img');
