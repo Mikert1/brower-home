@@ -40,12 +40,10 @@ function loadSavedSites() {
         
         base.addEventListener('click', function() {
             if (editMode) {
-                const url = prompt('Enter url', site.url);
-                if (url) {
-                    site.url = url;
-                    localStorage.setItem('settingsHomepage8', JSON.stringify({ settings }));
-                    applySettings();
-                }
+                popup.style.display = 'block';
+                background.style.display = 'block';
+                popup.querySelector('input[name="name"]').value = site.name;
+                popup.querySelector('input[name="URL"]').value = site.url;
             } else {
                 window.location.href = site.url;
             }
@@ -100,17 +98,12 @@ const savedTypeSwitch = document.getElementById('savedTypeSwitch');
 const edit = document.getElementById('edit');
 const background = document.getElementById('grayBackground');
 settingsButton.addEventListener('click', function() {
-    if (popup.style.display === 'block') {
-        popup.style.display = 'none';
-        background.style.display = 'none';
-    } else {
-        popup.style.display = 'block';
-        background.style.display = 'block';
-    }
+    // custom button
 });
 
 x.addEventListener('click', function() {
     popup.style.display = 'none';
+    background.style.display = 'none';
 });
 toggleSaved.addEventListener('click', function() {
     console.log('clicked');
@@ -140,33 +133,6 @@ document.addEventListener('keydown', function(event) {
 chatGPT.addEventListener('click', function() {
     window.location.href = 'https://chatgpt.com/';
 });
-
-async function loadLocal() {
-    const settings = await getSetings();
-    const locals = settings.find(setting => setting.key === "locals").value;
-
-    locals.forEach(local => {
-        for (let i = 1; i < 5; i++) {
-            if (local.key === `local${i}`) {
-                const test = document.getElementById(`local${i}`)
-                test.addEventListener('click', function() {
-                    if (editMode) {
-                        const url = prompt('Enter url', local.value);
-                        if (url) {
-                            local.value = url;
-                            localStorage.setItem('settingsHomepage8', JSON.stringify({ settings }));
-                            applySettings();
-                        }
-                    }
-                    window.location.href = local.value;
-                });
-                const img = document.createElement('img');
-                img.src = local.extra.image;
-                test.appendChild(img);
-            }
-        }
-    });
-}
 
 applySettings()
 

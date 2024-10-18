@@ -128,7 +128,7 @@ button {
     display: none;
     position: fixed;
     pointer-events: none;
-    background-color: #303030ee;
+    background-color: #30303099;
     width: 100vw;
     height: 100vh;
 }
@@ -182,6 +182,7 @@ button {
 
 .popupBody input {
     background-color: #303030;
+    color: #fff;
 }
 
 .popupFooter .save {
