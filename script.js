@@ -98,11 +98,14 @@ const settingsButton = document.getElementById('settings');
 const chatGPT = document.querySelector('.chatGPT');
 const savedTypeSwitch = document.getElementById('savedTypeSwitch');
 const edit = document.getElementById('edit');
+const background = document.getElementById('grayBackground');
 settingsButton.addEventListener('click', function() {
     if (popup.style.display === 'block') {
         popup.style.display = 'none';
+        background.style.display = 'none';
     } else {
         popup.style.display = 'block';
+        background.style.display = 'block';
     }
 });
 
