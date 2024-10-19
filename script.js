@@ -12,7 +12,7 @@ async function getSetings() {
         localStorage.setItem('settingsHomepage8', JSON.stringify(data));
     }
     savedType = 'home';
-    return data.settings;
+    return data;
 }
 
 function changeBrowserLogo() {
@@ -44,6 +44,16 @@ function loadSavedSites() {
                 background.style.display = 'block';
                 popup.querySelector('input[name="name"]').value = site.name;
                 popup.querySelector('input[name="URL"]').value = site.url;
+                saveButton.addEventListener('click', function() {
+                    site.name = popup.querySelector('input[name="name"]').value;
+                    site.url = popup.querySelector('input[name="URL"]').value;
+                    localStorage.setItem('settingsHomepage8', JSON.stringify(settings));
+                    loadSavedSites();
+                    popup.style.display = 'none';
+                    background.style.display = 'none';
+                    saveButton.removeEventListener('click', function() {});
+                });
+
             } else {
                 window.location.href = site.url;
             }
@@ -97,6 +107,7 @@ const chatGPT = document.querySelector('.chatGPT');
 const savedTypeSwitch = document.getElementById('savedTypeSwitch');
 const edit = document.getElementById('edit');
 const background = document.getElementById('grayBackground');
+const saveButton = document.getElementById('save');
 settingsButton.addEventListener('click', function() {
     // custom button
 });

@@ -185,11 +185,11 @@ button {
     color: #fff;
 }
 
-.popupFooter .save {
+.popupFooter #save {
     border: 2px solid #00a000;
 }
 
-.popupFooter .save:hover {
+.popupFooter #save:hover {
     border-color: #00ff00;
 }
 
@@ -215,7 +215,6 @@ button {
     max-height: 60%;
     object-fit: contain;
 }
-
 
 .extraTab {
     display: none;
@@ -324,7 +323,7 @@ button {
     margin: 0;
 }
 
-.savedCard {
+#savedCard {
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -1,67 +1,65 @@
 {
-    "settings": {
-        "DefaultSearchEngine": 1,
-        "useLastEngineAsDefault": false,
-        "DefaultSavedTab": "home",
-        "useLastTabAsDefault": false,
-        "key3": "value3",
-        "savedWebsites": {
-            "home": {
-                "1": {
-                    "name": "Netflix",
-                    "url": "https://www.netflix.com",
-                    "extra": {
-                        "image": "https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2023.ico"
-                    }
-                },
-                "2": {
-                    "name": "YouTube",
-                    "url": "https://www.youtube.com",
-                    "extra": {
-                        "image": "https://www.youtube.com/s/desktop/fd504f58/img/favicon.ico"
-                    }
+    "DefaultSearchEngine": 1,
+    "useLastEngineAsDefault": false,
+    "DefaultSavedTab": "home",
+    "useLastTabAsDefault": false,
+    "key3": "value3",
+    "savedWebsites": {
+        "home": {
+            "1": {
+                "name": "Netflix",
+                "url": "https://www.netflix.com",
+                "extra": {
+                    "image": "https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2023.ico"
                 }
             },
-            "work": {
-                "1": {
-                    "url": "https://www.google.com"
-                },
-                "2": {
-                    "url": "https://www.github.com"
+            "2": {
+                "name": "YouTube",
+                "url": "https://www.youtube.com",
+                "extra": {
+                    "image": "https://www.youtube.com/s/desktop/fd504f58/img/favicon.ico"
                 }
+            }
+        },
+        "work": {
+            "1": {
+                "url": "https://www.google.com"
             },
-            "school": {
-                "1": {
-                    "url": "https://www.google.com"
-                },
-                "2": {
-                    "url": "https://www.github.com"
+            "2": {
+                "url": "https://www.github.com"
+            }
+        },
+        "school": {
+            "1": {
+                "url": "https://www.google.com"
+            },
+            "2": {
+                "url": "https://www.github.com"
+            }
+        },
+        "games": {
+            "1": {
+                "name": "roblox",
+                "url": "https://www.roblox.com/"
+            },
+            "2": {
+                "name": "steam GD",
+                "url": "steam://rungameid/322170",
+                "extra": {
+                    "image": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4d/Logo_of_Geometry_Dash.svg/250px-Logo_of_Geometry_Dash.svg.png"
                 }
+            }
+        },
+        "local": {
+            "1": {
+                "name": "MyAdmin",
+                "url": "http://localhost/phpmyadmin/"
             },
-            "games": {
-                "1": {
-                    "name": "roblox",
-                    "url": "https://www.roblox.com/"
-                },
-                "2": {
-                    "name": "steam GD",
-                    "url": "steam://rungameid/322170",
-                    "extra": {
-                        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4d/Logo_of_Geometry_Dash.svg/250px-Logo_of_Geometry_Dash.svg.png"
-                    }
-                }
-            },
-            "local": {
-                "1": {
-                    "name": "MyAdmin",
-                    "url": "http://localhost/phpmyadmin/"
-                },
-                "2": {
-                    "name": "port 5500",
-                    "url": "http://localhost:5500",
-                    "extra": {
-                        "image": "http://localhost:5500/assets/images/favicon.svg"
-                    }
+            "2": {
+                "name": "port 5500",
+                "url": "http://localhost:5500",
+                "extra": {
+                    "image": "http://localhost:5500/assets/images/favicon.svg"
                 }
             }
         }
