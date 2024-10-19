@@ -217,7 +217,7 @@ button {
 }
 
 .extraTab {
-    display: none;
+    display: flex;
     border-radius: 10px;
     max-width: 60%;
     min-width: 615px;
