@@ -16,6 +16,14 @@ body {
     src: url('assets/font/berylium bd.otf') format('opentype');
 }
 
+.d-f {
+    display: flex;
+}
+
+.jc-c {
+    justify-content: center;
+}
+
 button {
     background-color: #303030;
     color: #fff;
