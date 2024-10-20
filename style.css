@@ -193,11 +193,11 @@ button {
     border-color: #00ff00;
 }
 
-.popupFooter .delete {
+.popupFooter #delete {
     border: 2px solid #a00000;
 }
 
-.popupFooter .delete:hover {
+.popupFooter #delete:hover {
     border-color: #ff0000;
 }
 

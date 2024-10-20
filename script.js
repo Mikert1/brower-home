@@ -53,6 +53,14 @@ function loadSavedSites() {
                     background.style.display = 'none';
                     saveButton.removeEventListener('click', function() {});
                 });
+                deleteButton.addEventListener('click', function() {
+                    delete settings.savedWebsites[savedType][i];
+                    localStorage.setItem('settingsHomepage8', JSON.stringify(settings));
+                    loadSavedSites();
+                    popup.style.display = 'none';
+                    background.style.display = 'none';
+                    deleteButton.removeEventListener('click', function() {});
+                });
 
             } else {
                 window.location.href = site.url;
@@ -108,6 +116,7 @@ const savedTypeSwitch = document.getElementById('savedTypeSwitch');
 const edit = document.getElementById('edit');
 const background = document.getElementById('grayBackground');
 const saveButton = document.getElementById('save');
+const deleteButton = document.getElementById('delete');
 settingsButton.addEventListener('click', function() {
     // custom button
 });
