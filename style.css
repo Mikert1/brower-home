@@ -141,6 +141,10 @@ button {
     height: 100vh;
 }
 
+#addSite {
+    display: none;
+}
+
 #popup {
     display: none;
     position: fixed;

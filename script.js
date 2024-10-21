@@ -114,6 +114,7 @@ const settingsButton = document.getElementById('settings');
 const chatGPT = document.querySelector('.chatGPT');
 const savedTypeSwitch = document.getElementById('savedTypeSwitch');
 const edit = document.getElementById('edit');
+const addSite = document.getElementById('addSite');
 const background = document.getElementById('grayBackground');
 const saveButton = document.getElementById('save');
 const deleteButton = document.getElementById('delete');
@@ -136,6 +137,7 @@ toggleSaved.addEventListener('click', function() {
 
 edit.addEventListener('click', function() {
     editMode = !editMode;
+    addSite.style.display = editMode ? 'block' : 'none';
 });
 
 document.addEventListener('keydown', function(event) {
