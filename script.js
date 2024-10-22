@@ -118,6 +118,34 @@ const addSite = document.getElementById('addSite');
 const background = document.getElementById('grayBackground');
 const saveButton = document.getElementById('save');
 const deleteButton = document.getElementById('delete');
+const addButton = document.getElementById('addSite');
+
+addButton.addEventListener('click', function() {
+    popup.style.display = 'block';
+    background.style.display = 'block';
+    popup.querySelector('input[name="name"]').value = '';
+    popup.querySelector('input[name="URL"]').value = '';
+    saveButton.addEventListener('click', function() {
+        const name = popup.querySelector('input[name="name"]').value;
+        const url = popup.querySelector('input[name="URL"]').value;
+        if (!settings.savedWebsites[savedType]) {
+            settings.savedWebsites[savedType] = {};
+        }
+        const newIndex = Object.keys(settings.savedWebsites[savedType]).length + 1;
+        settings.savedWebsites[savedType][newIndex] = { name, url };
+        localStorage.setItem('settingsHomepage8', JSON.stringify(settings));
+        loadSavedSites();
+        popup.style.display = 'none';
+        background.style.display = 'none';
+        saveButton.removeEventListener('click', function() {});
+    });
+    deleteButton.addEventListener('click', function() {
+        popup.style.display = 'none';
+        background.style.display = 'none';
+        deleteButton.removeEventListener('click', function() {});
+    });
+});
+
 settingsButton.addEventListener('click', function() {
     // custom button
 });
