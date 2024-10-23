@@ -14,12 +14,12 @@ const deleteButton = document.getElementById('delete');
 
 async function getSetings() {
     let data
-    if (localStorage.getItem('settingsHomepage8')) {
-        data = JSON.parse(localStorage.getItem('settingsHomepage8'));
+    if (localStorage.getItem('savedWebsitesHomepage8')) {
+        data = JSON.parse(localStorage.getItem('savedWebsitesHomepage8'));
     } else {
         const response = await fetch('settings.json');
         data = await response.json();
-        localStorage.setItem('settingsHomepage8', JSON.stringify(data));
+        localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(data.savedWebsites));
     }
     savedType = 'home';
     return data;
@@ -39,7 +39,7 @@ function loadSavedSites() {
     const saved = document.getElementById('savedSites');
     const template = document.getElementById('savedSite');
     saved.innerHTML = '';
-    const savedWebsites = settings.savedWebsites[savedType];
+    const savedWebsites = settings[savedType];
     for (let i = 1; i < 15; i++) {
         const site = savedWebsites[i];
         if (!site) {continue;}
@@ -57,15 +57,15 @@ function loadSavedSites() {
                 saveButton.addEventListener('click', function() {
                     site.name = popup.querySelector('input[name="name"]').value;
                     site.url = popup.querySelector('input[name="URL"]').value;
-                    localStorage.setItem('settingsHomepage8', JSON.stringify(settings));
+                    localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(settings));
                     loadSavedSites();
                     popup.style.display = 'none';
                     background.style.display = 'none';
                     saveButton.removeEventListener('click', function() {});
                 });
                 deleteButton.addEventListener('click', function() {
-                    delete settings.savedWebsites[savedType][i];
-                    localStorage.setItem('settingsHomepage8', JSON.stringify(settings));
+                    delete settings[savedType][i];
+                    localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(settings));
                     loadSavedSites();
                     popup.style.display = 'none';
                     background.style.display = 'none';
@@ -119,12 +119,12 @@ addButton.addEventListener('click', function() {
     saveButton.addEventListener('click', function() {
         const name = popup.querySelector('input[name="name"]').value;
         const url = popup.querySelector('input[name="URL"]').value;
-        if (!settings.savedWebsites[savedType]) {
-            settings.savedWebsites[savedType] = {};
+        if (!settings[savedType]) {
+            settings[savedType] = {};
         }
-        const newIndex = Object.keys(settings.savedWebsites[savedType]).length + 1;
-        settings.savedWebsites[savedType][newIndex] = { name, url };
-        localStorage.setItem('settingsHomepage8', JSON.stringify(settings));
+        const newIndex = Object.keys(settings[savedType]).length + 1;
+        settings[savedType][newIndex] = { name, url };
+        localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(settings));
         loadSavedSites();
         popup.style.display = 'none';
         background.style.display = 'none';
