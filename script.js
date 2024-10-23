@@ -2,6 +2,16 @@ let savedType;
 let browserId = 1;
 let editMode = false;
 let settings
+
+const extraTab = document.querySelector('.extraTab');
+const popup = document.getElementById('popup');
+const savedTypeSwitch = document.getElementById('savedTypeSwitch');
+const edit = document.getElementById('edit');
+const addSite = document.getElementById('addSite');
+const background = document.getElementById('grayBackground');
+const saveButton = document.getElementById('save');
+const deleteButton = document.getElementById('delete');
+
 async function getSetings() {
     let data
     if (localStorage.getItem('settingsHomepage8')) {
@@ -61,24 +71,20 @@ function loadSavedSites() {
                     background.style.display = 'none';
                     deleteButton.removeEventListener('click', function() {});
                 });
-
             } else {
                 window.location.href = site.url;
             }
         });
-    
         if (site.extra && site.extra.image) {
             img.src = site.extra.image;
         } else {
             img.src = `${site.url}/favicon.ico`;
         }
-    
         if (site.name) {
             name.textContent = site.name;
         } else {
             name.textContent = 'Unnamed';
         }
-    
         saved.appendChild(clone);
     };
 }
@@ -86,8 +92,6 @@ function loadSavedSites() {
 async function applySettings() {
     settings = await getSetings();
     changeBrowserLogo();
-
-    // saved sites
     loadSavedSites();
 }
 
@@ -106,20 +110,7 @@ search.addEventListener('keydown', function(event) {
     }
 });
 
-const x = document.getElementById('x');
-const toggleSaved = document.getElementById('toggleSaved');
-const extraTab = document.querySelector('.extraTab');
-const popup = document.getElementById('popup');
-const settingsButton = document.getElementById('settings');
-const chatGPT = document.querySelector('.chatGPT');
-const savedTypeSwitch = document.getElementById('savedTypeSwitch');
-const edit = document.getElementById('edit');
-const addSite = document.getElementById('addSite');
-const background = document.getElementById('grayBackground');
-const saveButton = document.getElementById('save');
-const deleteButton = document.getElementById('delete');
 const addButton = document.getElementById('addSite');
-
 addButton.addEventListener('click', function() {
     popup.style.display = 'block';
     background.style.display = 'block';
@@ -146,14 +137,23 @@ addButton.addEventListener('click', function() {
     });
 });
 
-settingsButton.addEventListener('click', function() {
+const customL = document.querySelector('.chatGPT');
+customL.addEventListener('click', function() {
+    window.location.href = 'https://chatgpt.com/';
+});
+
+const customR = document.getElementById('settings');
+customR.addEventListener('click', function() {
     // custom button
 });
 
+const x = document.getElementById('x');
 x.addEventListener('click', function() {
     popup.style.display = 'none';
     background.style.display = 'none';
 });
+
+const toggleSaved = document.getElementById('toggleSaved');
 toggleSaved.addEventListener('click', function() {
     console.log('clicked');
     if (extraTab.style.display === 'flex') {
@@ -178,10 +178,6 @@ document.addEventListener('keydown', function(event) {
         browserId = number;
         changeBrowserLogo();
     }
-});
-
-chatGPT.addEventListener('click', function() {
-    window.location.href = 'https://chatgpt.com/';
 });
 
 applySettings()
