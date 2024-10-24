@@ -19,7 +19,8 @@ async function getSetings() {
     } else {
         const response = await fetch('settings.json');
         data = await response.json();
-        localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(data.savedWebsites));
+        data = data.savedWebsites;
+        localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(data));
     }
     savedType = 'home';
     return data;
@@ -34,11 +35,13 @@ function changeBrowserLogo() {
 }
 
 function loadSavedSites() {
+
     savedTypeSwitch.querySelector('img').src = `assets/images/tabs/${savedType}.svg`;
     
     const saved = document.getElementById('savedSites');
     const template = document.getElementById('savedSite');
     saved.innerHTML = '';
+    console.log(settings);
     const savedWebsites = settings[savedType];
     for (let i = 1; i < 15; i++) {
         const site = savedWebsites[i];
