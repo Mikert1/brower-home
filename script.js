@@ -102,28 +102,29 @@ function loadSavedSites() {
         background.style.display = 'block';
         popup.querySelector('input[name="name"]').value = '';
         popup.querySelector('input[name="URL"]').value = '';
-        saveButton.addEventListener('click', function() {
-            const name = popup.querySelector('input[name="name"]').value;
-            const url = popup.querySelector('input[name="URL"]').value;
-            if (!settings[savedType]) {
-                settings[savedType] = {};
-            }
-            const newIndex = Object.keys(settings[savedType]).length + 1;
-            settings[savedType][newIndex] = { name, url };
-            localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(settings));
-            loadSavedSites();
-            popup.style.display = 'none';
-            background.style.display = 'none';
-            saveButton.removeEventListener('click', function() {});
-        });
-        deleteButton.addEventListener('click', function() {
-            popup.style.display = 'none';
-            background.style.display = 'none';
-            deleteButton.removeEventListener('click', function() {});
-        });
     });
-
+    addSite.style.display = editMode ? 'block' : 'none';
+    
 }
+saveButton.addEventListener('click', function() {
+    const name = popup.querySelector('input[name="name"]').value;
+    const url = popup.querySelector('input[name="URL"]').value;
+    if (!settings[savedType]) {
+        settings[savedType] = {};
+    }
+    const newIndex = Object.keys(settings[savedType]).length + 1;
+    settings[savedType][newIndex] = { name, url };
+    localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(settings));
+    loadSavedSites();
+    popup.style.display = 'none';
+    background.style.display = 'none';
+    saveButton.removeEventListener('click', function() {});
+});
+deleteButton.addEventListener('click', function() {
+    popup.style.display = 'none';
+    background.style.display = 'none';
+    deleteButton.removeEventListener('click', function() {});
+});
 
 async function applySettings() {
     settings = await getSetings();
