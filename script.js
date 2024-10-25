@@ -7,10 +7,12 @@ const extraTab = document.querySelector('.extraTab');
 const popup = document.getElementById('popup');
 const savedTypeSwitch = document.getElementById('savedTypeSwitch');
 const edit = document.getElementById('edit');
-const addSite = document.getElementById('addSite');
+let addSite;
 const background = document.getElementById('grayBackground');
 const saveButton = document.getElementById('save');
 const deleteButton = document.getElementById('delete');
+const template = document.getElementById('savedSite');
+const saved = document.getElementById('savedSites');
 
 async function getSetings() {
     let data
@@ -38,8 +40,6 @@ function loadSavedSites() {
 
     savedTypeSwitch.querySelector('img').src = `assets/images/tabs/${savedType}.svg`;
     
-    const saved = document.getElementById('savedSites');
-    const template = document.getElementById('savedSite');
     saved.innerHTML = '';
     console.log(settings);
     const savedWebsites = settings[savedType];
@@ -90,6 +90,39 @@ function loadSavedSites() {
         }
         saved.appendChild(clone);
     };
+    const clone2 = template.content.cloneNode(true);
+    const addButton = clone2.querySelector('.base');
+    addButton.id = 'addSite';
+    addButton.querySelector('.name').textContent = 'Add Site';
+    addButton.querySelector('img').src = 'assets/images/website/plus.svg';
+    saved.appendChild(clone2);
+    addSite = document.getElementById('addSite');
+    addButton.addEventListener('click', function() {
+        popup.style.display = 'block';
+        background.style.display = 'block';
+        popup.querySelector('input[name="name"]').value = '';
+        popup.querySelector('input[name="URL"]').value = '';
+        saveButton.addEventListener('click', function() {
+            const name = popup.querySelector('input[name="name"]').value;
+            const url = popup.querySelector('input[name="URL"]').value;
+            if (!settings[savedType]) {
+                settings[savedType] = {};
+            }
+            const newIndex = Object.keys(settings[savedType]).length + 1;
+            settings[savedType][newIndex] = { name, url };
+            localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(settings));
+            loadSavedSites();
+            popup.style.display = 'none';
+            background.style.display = 'none';
+            saveButton.removeEventListener('click', function() {});
+        });
+        deleteButton.addEventListener('click', function() {
+            popup.style.display = 'none';
+            background.style.display = 'none';
+            deleteButton.removeEventListener('click', function() {});
+        });
+    });
+
 }
 
 async function applySettings() {
@@ -111,33 +144,6 @@ search.addEventListener('keydown', function(event) {
             window.location.href = `https://www.bing.com/search?q=${search.value}`;
         }
     }
-});
-
-const addButton = document.getElementById('addSite');
-addButton.addEventListener('click', function() {
-    popup.style.display = 'block';
-    background.style.display = 'block';
-    popup.querySelector('input[name="name"]').value = '';
-    popup.querySelector('input[name="URL"]').value = '';
-    saveButton.addEventListener('click', function() {
-        const name = popup.querySelector('input[name="name"]').value;
-        const url = popup.querySelector('input[name="URL"]').value;
-        if (!settings[savedType]) {
-            settings[savedType] = {};
-        }
-        const newIndex = Object.keys(settings[savedType]).length + 1;
-        settings[savedType][newIndex] = { name, url };
-        localStorage.setItem('savedWebsitesHomepage8', JSON.stringify(settings));
-        loadSavedSites();
-        popup.style.display = 'none';
-        background.style.display = 'none';
-        saveButton.removeEventListener('click', function() {});
-    });
-    deleteButton.addEventListener('click', function() {
-        popup.style.display = 'none';
-        background.style.display = 'none';
-        deleteButton.removeEventListener('click', function() {});
-    });
 });
 
 const customL = document.querySelector('.chatGPT');
